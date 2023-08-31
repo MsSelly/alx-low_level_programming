@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _comparacadena - compare two strings
+ * _comparacadena - this compare two strings
  *
  * @s: first part of string
  * @p: last part of the string
