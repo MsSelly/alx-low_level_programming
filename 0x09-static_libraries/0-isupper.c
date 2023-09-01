@@ -3,7 +3,7 @@
 /**
  * _isupper - check the code for Holberton School students.
  *
- * @c: is an integer param
+ * @c: this is an integer param
  *
  * Return: Always 0.
  */

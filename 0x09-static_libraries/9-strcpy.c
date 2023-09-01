@@ -2,7 +2,7 @@
 
 /**
  * *_strcpy - copy strg to another string
- * @dest: pointer
+ * @dest: the pointer
  * @src: poiter
  * Return: numbers dest
  */

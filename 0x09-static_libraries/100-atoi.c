@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * _atoi - int
- * @s: pointer
+ * @s: the pointer
  * Return: int.
  */
 int _atoi(char *s)
