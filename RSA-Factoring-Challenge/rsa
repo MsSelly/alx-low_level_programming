@@ -1,0 +1,115 @@
+import sys
+import random
+import time
+import math
+
+
+def is_prime(num, k=20):
+	if num == 2 or num == 3:
+	return True
+	if num < 2 or num % 2 == 0:
+	return False
+
+	d = num - 1
+	r = 0
+	while d % 2 == 0:
+	d //= 2
+	r += 1
+
+	for _ in range(k):
+	a = random.randint(2, num - 2)
+	x = pow(a, d, num)
+	if x == 1 or x == num - 1:
+	continue
+	for _ in range(r - 1):
+		x = pow(x, 2, num)
+		if x == num - 1:
+		break
+		else:
+		return False
+
+		return True
+
+
+		if __name__ == "__main__":
+		if len(sys.argv) != 2:
+	print("Usage: rsa <file>")
+exit()
+
+	input_file = sys.argv[1]
+
+	try:
+	with open(input_file, 'r') as f:
+lines = f.readlines()
+	except FileNotFoundError:
+	print("File not found")
+exit()
+
+	start_time = time.time()
+num = int(lines[0].strip())
+
+	for i in range(2, num // 2):
+	if num % i == 0 and is_prime(i) and is_prime(num // i):
+	print(f"{num}={i}*{num // i}")
+	break
+
+	if time.time() - start_time > 5:
+	print("Time limit exceeded")
+exit()
+
+
+	def is_prime(n):
+		if n < 2:
+		return False
+		for i in range(2, int(math.sqrt(n)) + 1):
+			if n % i == 0:
+			return False
+			return True
+
+
+			def pollards_rho(n):
+				if n % 2 == 0:
+				return 2
+
+				def f(x):
+					return (x**2 + 1) % n
+
+					x, y, d = 2, 2, 1
+					while d == 1:
+	x = f(x)
+	y = f(f(y))
+d = math.gcd(abs(x - y), n)
+	return d
+
+
+	def factor_rsa_number(n):
+		factors = []
+		while n > 1:
+		f = pollards_rho(n)
+		while n % f == 0:
+		factors.append(f)
+	n //= f
+	 return tuple(factors)
+
+
+# Read the input file name from the command line arguments
+	 input_file = sys.argv[1]
+
+# Read the RSA numbers from the input file
+	 with open(input_file, 'r') as f:
+	 rsa_numbers = [int(line.strip()) for line in f.readlines()]
+
+# Start a timer to measure the execution time
+start_time = time.time()
+
+# Factor each RSA number in the file using the trial division method
+	for n in rsa_numbers:
+p, q = factor_rsa_number(n)
+	print(f"{n}={q}*{p}")
+
+# Stop the timer and calculate the execution time
+end_time = time.time()
+	exec_time = end_time - start_time
+
+# Print the execution time in seconds
+	print("Total execution time:", exec_time, "seconds")

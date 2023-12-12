@@ -1,0 +1,69 @@
+#!/usr/bin/python3
+
+import math
+import time
+import sys
+
+
+def fact_digit(digit):
+	""" Function for factorizing a number into 2 smaller numbers
+
+		Args: digit, an integer to be factorized
+
+		Return: a tuple of the factors of the given digit
+		if found and (0,0) if otherwise
+
+		"""
+
+		for h in range(2, int(math.sqrt(digit)) + 1):
+			""" If the loop gets to a number(h) which is evenly divisible by digit
+				then it is a factor of the digit
+				"""
+				if digit % h == 0:
+				return h, digit // h
+				"""if not, return a tuple of nothing"""
+				return None, None
+
+
+				def print_fact_digit(digit):
+					"""Function that prints the factors of digit in the format
+						'n=p*q' where p and q are the factors and n is the factors multiplied
+
+						 Args: digit(integer) to be factorized
+						 A time limit of 5 seconds is enforced as per requirement
+						 """
+
+	"""Current time program starts is captured"""
+start = time.time()
+
+	"""Calling the previous function to factorize"""
+p, q = fact_digit(digit)
+
+	"""time it took for factorization is calculated"""
+	time_limit = time.time() - start
+	if time_limit <= 5:
+	if p is not None and q is not None:
+	print("{}={}*{}".format(digit, p, q))
+	else:
+	print("{} is a prime number".format(digit))
+	else:
+	print("factorization took too long")
+
+
+	def read_from_file(file_n):
+		with open(file_n, 'r') as file:
+			for every_line in file:
+			"""covert digits read into integers,
+			removing whitespace characters
+	"""
+	digit = int(every_line.strip())
+	  print_fact_digit(digit)
+
+
+	  if __name__ == "__main__":
+	  '''Reads input file and factorizes.'''
+	  if len(sys.argv) != 2:
+	  print("Usage <file>")
+	  else:
+	reading_file = sys.argv[1]
+read_from_file(reading_file)
